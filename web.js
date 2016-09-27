@@ -4,9 +4,10 @@ var morgan = require('morgan');
 var app = express();
 
 app.use(morgan('dev'));
-app.use(gzippo.staticGzip("" + __dirname + "/dist"));
-app.listen(process.env.PORT || 5000);
+app.use(gzippo.staticGzip("" + __dirname + "/dist/public"));
 
 app.use(function(req, res){
-    res.sendFile(__dirname + "/dist/index.html");
+    res.sendFile(__dirname + "/dist/public/index.html");
 });
+
+app.listen(process.env.PORT || 5000);
